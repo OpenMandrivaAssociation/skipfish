@@ -1,9 +1,10 @@
 Name:		skipfish
-Version:	1.69
-Release:	%mkrel 0.0.beta1
+Version:	1.72
+Release:	%mkrel 0.0.beta.0.1
 Summary:	Collection of simple PIN or passphrase entry dialogs
 #http://code.google.com/p/%{name}/downloads/detail?name=%{name}-%{version}b.tgz
 Source0:	%{name}-%{version}b.tgz
+Source1:	%{name}-starter
 License:	GPLv2
 Group:		System/Kernel and hardware
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -28,16 +29,24 @@ A fully automated, active web application security reconnaissance tool. Key feat
 %install
 rm -rf %{buildroot}
 install -d %{buildroot}%{_bindir}
-install %{name} %{buildroot}%{_bindir}/%{name}
+install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}
 install -d %{buildroot}%{_mandir}/man1
 install %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+install -d %{buildroot}/%{_datadir}/%{name}
+install %{name} %{buildroot}%{_datadir}/%{name}
+cp -r assets %{buildroot}/%{_datadir}/%{name}
+cp dictionaries/*.wl %{buildroot}/%{_datadir}/%{name}
+ln -s default.wl %{buildroot}/%{_datadir}/%{name}/%{name}.wl
+
+cp dictionaries/README-FIRST README.dictionaries
 
 %clean
 rm -rf %{buildroot}
 
 %files 
 %defattr(-,root,root)
-%doc README ChangeLog
+%doc README README.dictionaries ChangeLog
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1*
+%{_datadir}/%{name}
 
