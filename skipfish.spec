@@ -11,7 +11,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://code.google.com/p/skipfish/
 BuildRequires:	libopenssl-devel
 BuildRequires:	libidn-devel
-BuildRequires:	zlib1-devel
+BuildRequires:	libzlib-devel
 
 
 %description 
