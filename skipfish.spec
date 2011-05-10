@@ -12,12 +12,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://code.google.com/p/skipfish/
 BuildRequires:	libopenssl-devel
 BuildRequires:	libidn-devel
-%if %mdkversion < 201100
 BuildRequires:	zlib1-devel
-%else
-BuildRequires:	libzlib-devel
-%endif
-
 
 %description 
 A fully automated, active web application security reconnaissance tool. Key features:
