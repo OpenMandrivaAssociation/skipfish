@@ -6,7 +6,7 @@ Summary:	Collection of simple PIN or passphrase entry dialogs
 # Use: make download
 Source0:	http://%{name}.googlecode.com/files/%{name}-%{version}b.tgz
 Source1:	%{name}-starter
-Patch:		skipfish-1.92b-fhs.patch
+Patch0:		skipfish-1.92b-fhs.patch
 License:	GPLv2
 Group:		System/Kernel and hardware
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
