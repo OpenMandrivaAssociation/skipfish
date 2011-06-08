@@ -1,11 +1,12 @@
 Name:		skipfish
 Version:	1.92
-Release:	%mkrel 0.0.beta.1
+Release:	%mkrel 0.0.beta.2
 Summary:	Collection of simple PIN or passphrase entry dialogs
 #http://code.google.com/p/%{name}/downloads/detail?name=%{name}-%{version}b.tgz
 # Use: make download
 Source0:	http://%{name}.googlecode.com/files/%{name}-%{version}b.tgz
 Source1:	%{name}-starter
+Patch:		skipfish-1.92b-fhs.patch
 License:	GPLv2
 Group:		System/Kernel and hardware
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -22,6 +23,7 @@ A fully automated, active web application security reconnaissance tool. Key feat
 
 %prep
 %setup -q -n %{name}-%{version}b
+%patch0 -p1
 
 %build
 %make
@@ -29,13 +31,12 @@ A fully automated, active web application security reconnaissance tool. Key feat
 %install
 rm -rf %{buildroot}
 install -d %{buildroot}%{_bindir}
-install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}
+install -m 755 %{name} %{buildroot}%{_bindir}/%{name}
 install -d %{buildroot}%{_mandir}/man1
 install %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 install -d %{buildroot}/%{_datadir}/%{name}
-install %{name} %{buildroot}%{_datadir}/%{name}
 cp -r assets %{buildroot}/%{_datadir}/%{name}
-cp dictionaries/*.wl %{buildroot}/%{_datadir}/%{name}
+install -m 644 dictionaries/*.wl %{buildroot}/%{_datadir}/%{name}
 ln -s default.wl %{buildroot}/%{_datadir}/%{name}/%{name}.wl
 
 cp dictionaries/README-FIRST README.dictionaries
