@@ -1,6 +1,6 @@
 Name:		skipfish
-Version:	1.92
-Release:	%mkrel 0.0.beta.2
+Version:	1.93
+Release:	%mkrel 0.0.beta.1
 Summary:	Collection of simple PIN or passphrase entry dialogs
 #http://code.google.com/p/%{name}/downloads/detail?name=%{name}-%{version}b.tgz
 # Use: make download
