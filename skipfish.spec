@@ -1,25 +1,32 @@
 Name:		skipfish
-Version:	2.01
-Release:	%mkrel 0.0.beta.1
+Version:	2.02
+Release:	%mkrel 0.beta.1
 Summary:	Collection of simple PIN or passphrase entry dialogs
 #http://code.google.com/p/%{name}/downloads/detail?name=%{name}-%{version}b.tgz
 # Use: make download
+URL:		http://code.google.com/p/skipfish/
 Source0:	http://%{name}.googlecode.com/files/%{name}-%{version}b.tgz
 Source1:	%{name}-starter
 Patch0:		skipfish-1.92b-fhs.patch
 License:	GPLv2
-Group:		System/Kernel and hardware
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-URL:		http://code.google.com/p/skipfish/
+Group:		Monitoring
 BuildRequires:	libopenssl-devel
 BuildRequires:	libidn-devel
 BuildRequires:	zlib1-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description 
-A fully automated, active web application security reconnaissance tool. Key features:
- * High speed: pure C code, highly optimized HTTP handling, minimal CPU footprint - easily achieving 2000 requests per second with responsive targets.
- * Ease of use: heuristics to support a variety of quirky web frameworks and mixed-technology sites, with automatic learning capabilities, on-the-fly wordlist creation, and form autocompletion.
- * Cutting-edge security logic: high quality, low false positive, differential security checks, capable of spotting a range of subtle flaws, including blind injection vectors.
+A fully automated, active web application security reconnaissance tool. Key
+features:
+ * High speed: pure C code, highly optimized HTTP handling, minimal CPU
+   footprint - easily achieving 2000 requests per second with responsive
+   targets.
+ * Ease of use: heuristics to support a variety of quirky web frameworks and
+   mixed-technology sites, with automatic learning capabilities, on-the-fly
+   wordlist creation, and form autocompletion.
+ * Cutting-edge security logic: high quality, low false positive, differential
+   security checks, capable of spotting a range of subtle flaws, including
+   blind injection vectors.
 
 %prep
 %setup -q -n %{name}-%{version}b
