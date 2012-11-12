@@ -1,0 +1,12 @@
+diff -Naur -x '*~' skipfish-1.92b/config.h skipfish-1.92b-fhs//config.h
+--- skipfish-1.92b/config.h	2011-06-04 21:59:12.000000000 +0200
++++ skipfish-1.92b-fhs//config.h	2011-06-08 11:28:18.000000000 +0200
+@@ -29,7 +29,7 @@
+ 
+ /* Default paths to runtime files: */
+ 
+-#define ASSETS_DIR              "assets"
++#define ASSETS_DIR              "/usr/share/skipfish/assets"
+ #define DEF_WORDLIST            "skipfish.wl"
+ 
+ /* Various default settings for HTTP client (cmdline override): */
