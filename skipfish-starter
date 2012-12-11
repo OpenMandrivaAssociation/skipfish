@@ -1,0 +1,42 @@
+#!/bin/bash
+
+RETVAL=0
+LOCAL_PARAMETERS="$@"
+LOCAL_DIR=$PWD
+
+pushd /usr/share/skipfish > /dev/null
+	while getopts  "W:o:" OPTNAME ;	do
+		case "$OPTNAME" in
+			"o")
+				LOCAL_o=1
+				if [[ ! -d "${OPTARG}" && ! -w "${OPTARG}" ]] ; then
+				if [[ -d "${LOCAL_DIR}/${OPTARG}" && -w "${LOCAL_DIR}/${OPTARG}" ]] ; then
+						LOCAL_PARAMETERS=`echo ${LOCAL_PARAMETERS} | /bin/sed -e "s#\(-o \)\([^/]\)#\1${LOCAL_DIR}/\2#"`
+					else
+						echo Need a writeble and empty directory for output.
+						RETVAL=1
+					fi
+				fi
+			;;
+			"W")
+				LOCAL_W=1
+				if [[ ! -f "${OPTARG}" && ! -w "${OPTARG}" ]] ; then
+					echo "${LOCAL_DIR}/${OPTARG}"
+					if [[ -f "${LOCAL_DIR}/${OPTARG}" && -w "${LOCAL_DIR}/${OPTARG}" ]] ; then
+						LOCAL_PARAMETERS=`echo ${LOCAL_PARAMETERS} | /bin/sed -e "s#\(-W \)\([^/]\)#\1${LOCAL_DIR}/\2#"`
+					else
+						echo Need a writeble dictionary. Example use a copy /usr/share/skipfish/skipfish.wl
+						RETVAL=1
+					fi
+				fi
+			;;
+		esac
+	done
+	if [[ ${RETVAL} -eq 0 ]] ; then 
+		./skipfish ${LOCAL_PARAMETERS}
+		RETVAL=$?
+	fi
+popd > /dev/null
+
+exit ${RETVAL}
+
