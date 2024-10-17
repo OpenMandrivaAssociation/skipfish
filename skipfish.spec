@@ -4,7 +4,7 @@ Release:	%mkrel 0.beta.1
 Summary:	Collection of simple PIN or passphrase entry dialogs
 #http://code.google.com/p/%{name}/downloads/detail?name=%{name}-%{version}b.tgz
 # Use: make download
-URL:		http://code.google.com/p/skipfish/
+URL:		https://code.google.com/p/skipfish/
 Source0:	http://%{name}.googlecode.com/files/%{name}-%{version}b.tgz
 Source1:	%{name}-starter
 Patch0:		skipfish-1.92b-fhs.patch
