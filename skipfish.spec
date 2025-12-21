@@ -10,6 +10,7 @@ Source1:	%{name}-starter
 Patch0:		skipfish-1.92b-fhs.patch
 License:	GPLv2
 Group:		Monitoring
+BuildRequires:	make
 BuildRequires:	libopenssl-devel
 BuildRequires:	libidn-devel
 BuildRequires:	zlib1-devel
